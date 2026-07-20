@@ -1,4 +1,4 @@
-import { fallbackRoadmaps, defaultRoadmap } from "../data/fallbackRoadmaps.js";
+import { fallbackRoadmap, defaultRoadmap } from "../data/fallbackRoadmaps.js";
 
 export const generateFallbackRoadmap = (goal, level, weeklyHours) => {
   const goalKey = goal.toLowerCase();
