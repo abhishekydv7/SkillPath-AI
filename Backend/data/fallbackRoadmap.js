@@ -1,4 +1,4 @@
-export const fallbackRoadmaps = {
+export const fallbackRoadmap = {
   "web development": {
     beginner: {
       estimatedDuration: "12 weeks",
