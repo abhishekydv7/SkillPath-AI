@@ -1,10 +1,14 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5001/api",
+  baseURL:
+    import.meta.env.VITE_API_URL,
   withCredentials: true,
   headers: { "Content-Type": "application/json" },
 });
+if (!import.meta.env.VITE_API_URL) {
+  console.error("VITE_API_URL is not set — API calls will fail");
+}
 
 api.interceptors.response.use(
   (response) => response,
