@@ -44,7 +44,7 @@ app.use(
 );
 
 // Explicitly handle preflight requests
-app.options("*", cors());
+app.options(/.*/, cors());
 app.use(express.json());
 app.use(cookieParser());
 
