@@ -7,6 +7,7 @@ import { isValidEmail, isValidPassword } from "../utils/validators.js";
 // @access Public
 
 export const registerUser = async (req, res) => {
+    console.log("REGISTER BODY:", req.body);
     const { name, email, password } = req.body;
 
     if(!name || !email || !password) {
@@ -55,7 +56,7 @@ export const registerUser = async (req, res) => {
 // @route   POST /api/auth/login
 // @access  Public
 export const loginUser = async (req, res) => {
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
 
   const user = await User.findOne({ email });
 
