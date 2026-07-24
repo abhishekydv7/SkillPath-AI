@@ -228,32 +228,6 @@ Database
 
 ---
 
-# Screenshots
-
-## Landing Page
-
-_Add screenshot here_
-
----
-
-## Dashboard
-
-_Add screenshot here_
-
----
-
-## AI Roadmap
-
-_Add screenshot here_
-
----
-
-## Chat
-
-_Add screenshot here_
-
----
-
 # Future Improvements
 
 - AI Quiz Generation
