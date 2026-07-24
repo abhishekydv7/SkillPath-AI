@@ -31,20 +31,22 @@ const app = express();
 
 // Security and utility middleware
 app.use(helmet());
-app.use((req, res, next) => {
-  console.log("Origin:", req.headers.origin);
-  next();
-});
+const allowedOrigins = ["http://localhost:5173", process.env.CLIENT_URL].filter(
+  Boolean,
+);
 
 app.use(
   cors({
-    origin: true,
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   }),
 );
-
-// Explicitly handle preflight requests
-app.options(/.*/, cors());
 app.use(express.json());
 app.use(cookieParser());
 

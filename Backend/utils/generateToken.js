@@ -5,7 +5,6 @@ const generateToken = (res, userId) => {
     expiresIn: "30d",
   });
 
-  console.log("🍪 Setting JWT cookie");
 
   res.cookie("jwt", token, {
     httpOnly: true,
@@ -15,7 +14,6 @@ const generateToken = (res, userId) => {
     maxAge: 30 * 24 * 60 * 60 * 1000,
   });
 
-  console.log("🍪 Cookie attached to response");
 };
 
 export default generateToken;
