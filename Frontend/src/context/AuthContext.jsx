@@ -32,7 +32,6 @@ export const AuthProvider = ({ children }) => {
 };
 
   const register = async ( name, email, password) => {
-    console.log("REGISTER REQUEST", { name, email, password});
     
   const response  = await api.post('/auth/register', { 
     name,
