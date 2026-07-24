@@ -31,25 +31,20 @@ const app = express();
 
 // Security and utility middleware
 app.use(helmet());
-const clientUrl = process.env.CLIENT_URL;
-const allowedOrigins = [
-  'http://localhost:5173',
-  clientUrl,
-  clientUrl ? clientUrl.replace(/\/$/, '') : null
-].filter(Boolean);
-
 app.use((req, res, next) => {
   console.log("Origin:", req.headers.origin);
-  console.log("Allowed Origins:", allowedOrigins);
   next();
 });
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://skill-path-ddai-six.vercel.app"],
+    origin: true,
     credentials: true,
   }),
 );
+
+// Explicitly handle preflight requests
+app.options("*", cors());
 app.use(express.json());
 app.use(cookieParser());
 
