@@ -38,16 +38,18 @@ const allowedOrigins = [
   clientUrl ? clientUrl.replace(/\/$/, '') : null
 ].filter(Boolean);
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-}));
+app.use((req, res, next) => {
+  console.log("Origin:", req.headers.origin);
+  console.log("Allowed Origins:", allowedOrigins);
+  next();
+});
+
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://skill-path-ddai-six.vercel.app"],
+    credentials: true,
+  }),
+);
 app.use(express.json());
 app.use(cookieParser());
 
